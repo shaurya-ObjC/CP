@@ -1,26 +1,56 @@
 import UIKit
 
-class Solution {
-    func subtractProductAndSum(_ n: Int) -> Int {
-        
-        let digits = String(n).map { Int(String($0))! * 2 }
-        return digits.reduce(1, *) - digits.reduce(0, +)
-       
-        
-//        //Normal
-//        var num = n
-//        var product = 1
-//        var sum = 0
-//        while num != 0 {
-//            let val = num%10
-//            product = product * val
-//            sum = sum + val
-//
-//            num = num/10
-//        }
-//        return product - sum
+
+public class ListNode {
+    public var val: Int
+    public var next: ListNode?
+    public init(_ val: Int) {
+        self.val = val
+        self.next = nil
     }
 }
 
-Solution().subtractProductAndSum(231)
-Solution().subtractProductAndSum(4421)
+class Solution {
+    func getDecimalValue(_ head: ListNode?) -> Int {
+        
+        var arr:[Int] = [Int]()
+        
+        var runNode: ListNode? = head
+        while runNode != nil {
+            arr.append(runNode?.val ?? -1)
+            runNode = runNode?.next
+        }
+        
+        return Int(arr
+            .map { String($0) }
+            .joined(separator: ""),
+                   radix:2
+            ) ?? -1
+        
+        
+//        var result: Int = 0
+//        var current: ListNode? = head
+//        while let c = current {
+//            result = (result << 1) | c.val
+//            current = c.next
+//        }
+//        return result
+//
+//
+//
+//        var current = head
+//        var output = ""
+//        while let c = current{
+//            output = String(c.val) + output
+//            current = c.next
+//        }
+//
+//        var result = 0
+//
+//        for (index, value) in output.enumerated() {
+//            result = result + (Int(String(value))! * Int(pow(2.0, Double(index))))
+//        }
+//        return result
+    }
+}
+
