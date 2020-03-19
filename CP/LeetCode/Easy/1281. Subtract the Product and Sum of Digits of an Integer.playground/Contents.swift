@@ -1,56 +1,39 @@
 import UIKit
-
-
-public class ListNode {
-    public var val: Int
-    public var next: ListNode?
-    public init(_ val: Int) {
-        self.val = val
-        self.next = nil
-    }
-}
-
 class Solution {
-    func getDecimalValue(_ head: ListNode?) -> Int {
+    func judgeCircle(_ moves: String) -> Bool {
         
-        var arr:[Int] = [Int]()
+        var x = 0
+             var y = 0
+             
+             for move in moves {
+                 
+                 switch move {
+                     case "L": x = x-1
+                     case "R": x = x+1
+                     case "U": y = y+1
+                     case "D": y = y-1
+                     default : break
+                 }
+             }
+             
+             if (x == 0 && y == 0) {
+                 return true
+             }
+             
+             return false
         
-        var runNode: ListNode? = head
-        while runNode != nil {
-            arr.append(runNode?.val ?? -1)
-            runNode = runNode?.next
-        }
         
-        return Int(arr
-            .map { String($0) }
-            .joined(separator: ""),
-                   radix:2
-            ) ?? -1
+        return moves.reduce(into: (0, 0)) {
+            switch $1 {
+            case "R": $0.0 += 1
+            case "L": $0.0 += -1
+            case "U": $0.1 += 1
+            case "D": $0.1 += -1
+            default: break
+            }
+        } == (0, 0)
         
-        
-//        var result: Int = 0
-//        var current: ListNode? = head
-//        while let c = current {
-//            result = (result << 1) | c.val
-//            current = c.next
-//        }
-//        return result
-//
-//
-//
-//        var current = head
-//        var output = ""
-//        while let c = current{
-//            output = String(c.val) + output
-//            current = c.next
-//        }
-//
-//        var result = 0
-//
-//        for (index, value) in output.enumerated() {
-//            result = result + (Int(String(value))! * Int(pow(2.0, Double(index))))
-//        }
-//        return result
     }
 }
 
+Solution().judgeCircle("LRUD")
