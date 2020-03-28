@@ -1,0 +1,37 @@
+#### Constant
+ 
+ # Do's
+
+ 1. Search in project before creating any new constantt
+ 2. First Priority:- Create constant inside the same class, if that's only used once and keep them at top
+ 3. Second Priority:- Check the bhaviour of variable whether it can be kept under global constant or Constant + Extension's
+ 4. Use Enum or Struct for constants?
+    Answer:- We Should use case-less enum not Structs
+
+    Because:- The advantage of using a case-less enumeration is that it can't accidentally be instantiated and works as a pure namespace.
+        See example:- 
+	For e.g:- 
+		enum PhysicalConstants {
+		    static let speedOfLight = 299_792_458\
+		 }
+		PhysicalConstants.speedOfLight.
+        
+    Reference:- https://stackoverflow.com/questions/38585344/swift-constants-struct-or-enum}
+ 5. If required you can created nested enum also
+ 
+ # Don't
+
+ 1. Create one enum to call all the constants inside it. It's better to divide into differnt different Constants only
+    
+    enum ConstantK {
+           enum DummyControlleer {
+               enum EnumConstant {
+                   enum Inner {
+                       static let iValue = "Inner Value"
+                   }
+               }
+           }
+       }
+ 
+ print(ConstantK.DummyControlleer.Inner.iValue)
+ 
