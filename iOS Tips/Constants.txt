@@ -2,9 +2,9 @@
  
  # Do's
 
- 1. Search in project before creating any new constantt
+ 1. Search in project before creating any new constant
  2. First Priority:- Create constant inside the same class, if that's only used once and keep them at top
- 3. Second Priority:- Check the bhaviour of variable whether it can be kept under global constant or Constant + Extension's
+ 3. Second Priority:- Check the behaviour of variable whether it can be kept under global constant or Constant + Extension's
  4. Use Enum or Struct for constants?
     Answer:- We Should use case-less enum not Structs
 
@@ -21,7 +21,7 @@
  
  # Don't
 
- 1. Create one enum to call all the constants inside it. It's better to divide into differnt different Constants only
+ 1. Create one enum to call all the constants inside it. It's better to divide into different Constants only
     
     enum ConstantK {
            enum DummyControlleer {
